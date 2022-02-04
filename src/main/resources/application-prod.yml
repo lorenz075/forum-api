@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: ${FORUM_DATABASE_URL}
+    username: "${FORUM_DATABASE_USERNAME}"
+    password: "${FORUM_DATABASE_PASSWORD}"
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  boot:
+    admin:
+      client:
+        url:
+        - http://localhost:8081
+  
+   
+forum:
+  jwt:
+    secret: "${FORUM_JWT_SECRET}"
+    expiration: 86400000
+#Actuator
+management:
+  endpoints:        
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: "@project.name@"
+    version: "@project.version@"
+    groupId: "@project.groupId@"
+    java:
+      source: "@java.version@"
+      target: "@java.version@"
+ 
