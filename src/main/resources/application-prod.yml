@@ -22,7 +22,8 @@ spring:
       client:
         url:
         - http://localhost:8081
-  
+server:
+  port:"${PORT}"  
    
 forum:
   jwt:
